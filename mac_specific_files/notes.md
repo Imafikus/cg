@@ -1,0 +1,1 @@
+use `#include <GLUT/glut.h>`instead of `#include <GL/glut.h>`
