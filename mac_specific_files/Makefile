@@ -1,17 +1,17 @@
-PROGRAM   = example_program
+INPUT    ?= main.c
+OUTPUT   ?= main
 CC        = gcc
 CFLAGS    = -g -Wall
-LDFLAGS   = -framework GLUT -framework OpenGL -framework Cocoa -Wdeprecated-declarations
+LDFLAGS   = -framework GLUT -framework OpenGL -framework Cocoa 
 
-$(PROGRAM): main.o
-	$(CC) -o $(PROGRAM) main.o $(LDFLAGS)
 
+build: 
+	$(CC) $(CFLAGS) $(INPUT) -o $(OUTPUT) $(LDFLAGS) && rm -rf *.dSYM
+	
 .PHONY: clean dist
 
 clean:
-	-rm *.o $(PROGRAM) *core
-
-dist: clean
-	-tar -chvj -C .. -f ../$(PROGRAM).tar.bz2 $(PROGRAM)
+	-rm $(OUTPUT) 
+	
 
 
